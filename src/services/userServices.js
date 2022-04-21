@@ -6,9 +6,13 @@ function postLogin(payload) {
 }
 function postSignIn(payload) {
     return Axios.post(`/signup`,payload);
- }
+}
+function postMess(payload) {
+   return Axios.post(`/add-message`,payload);
+}
 
 export const userServices = {
 postLogin,
-postSignIn
+postSignIn,
+postMess
 };

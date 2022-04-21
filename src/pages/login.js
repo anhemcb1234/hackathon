@@ -40,8 +40,10 @@ function Login() {
     useEffect(() => {
         if(localStorage.getItem('token')) {
             navigate('/chatBox')
+        } else {
+            navigate('/')
         }
-    })
+    }, [])
     return (
         <>
             <div className="font-sans">
