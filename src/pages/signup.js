@@ -1,6 +1,39 @@
-import Login from "./login";
+import {userServices} from '../services/userServices'
+import {useState} from 'react';
 
 function SignUp() {
+    const [name, setName] = useState('');
+    const [Fname, setFName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+    const [pass, setPass] = useState('');
+    const [confirmPass, setConfirmPass] = useState('');
+
+    const handlerName = (e) => {
+        setName(e.target.value)
+    }
+    const handlerFullName = (e) => {
+        setFName(e.target.value)
+    }
+    const handlerPhone = (e) => {
+        setPhone(e.target.value)
+    }
+    const handlerEmail= (e) => {
+        setEmail(e.target.value)
+    }
+    const handlerPass= (e) => {
+        setPass(e.target.value)
+    }
+    const handlerConfirmPass= (e) => {
+        setConfirmPass(e.target.value)
+    }
+    async function handlerSubmit() {
+        try{
+            console.log(1)
+        } catch(e) {
+            alert(e)
+        }
+    }
     return (
         <>
             <div className="font-sans">
@@ -16,44 +49,39 @@ function SignUp() {
                             <form method="" action="" className="mt-10">
 
                                 <div>
-                                    <input type="text" placeholder="Name"
+                                    <input onChange={e => handlerName(e)} type="text" placeholder="Name"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600">err.name </p>
                                 </div>
 
                                 <div className="mt-7">
-                                    <input type="text" placeholder="Full name"
+                                    <input onChange={e => handlerFullName(e)} type="text" placeholder="Full name"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600">err.fullName </p>
                                 </div>
 
                                 <div className="mt-7">
-                                    <input type="number" placeholder="Phone number"
+                                    <input onChange={e => handlerPhone(e)} type="number" placeholder="Phone number"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600"> err.phone </p>
                                 </div>
 
                                 <div className="mt-7">
-                                    <input type="email" placeholder="Email"
+                                    <input onChange={e => handlerEmail(e)} type="email" placeholder="Email"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600"> err.email </p>
                                 </div>
 
                                 <div className="mt-7">
-                                    <input type="password" placeholder="Password"
+                                    <input onChange={e => handlerPass(e)} type="password" placeholder="Password"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600"> err.password </p>
                                 </div>
 
                                 <div className="mt-7">
-                                    <input type="password" placeholder="Confirm password"
+                                    <input onChange={e => handlerConfirmPass(e)} type="password" placeholder="Confirm password"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                    <p className="error font-semibold text-red-600">err.confirmPassword </p>
                                 </div>
 
 
                                 <div className="mt-7">
                                     <button
+                                        onClick={handlerSubmit}
                                         className="bg-blue-500 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
                                         Register
                                     </button>
@@ -71,7 +99,6 @@ function SignUp() {
                                 <div className="mt-7">
                                     <div className="flex justify-center items-center">
                                         <label className="mr-2">You have an account?</label>
-
                                         <a divef="#"
                                            className=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"/>
                                         Login

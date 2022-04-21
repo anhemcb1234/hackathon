@@ -1,6 +1,5 @@
-import {authService} from "../service/authService";
-import {useState} from "react";
-import jwt_decode from "jwt-decode";
+import {useState} from 'react'
+import {userServices} from '../services/userServices'
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -20,13 +19,6 @@ function Login() {
             return;
         }
         try {
-            const res = await authService.doLogin({email, password});
-            const token = res.data.token;
-            const data = (jwt_decode(token));
-            alert(data.email);
-            alert(data.password);
-            console.log(data);
-            console.log(token);
         } catch (e) {
             console.log(e)
         }
