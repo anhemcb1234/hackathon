@@ -1,38 +1,4 @@
-import {authService} from "../service/authService";
-import {useState} from "react";
-import jwt_decode from "jwt-decode";
-
 function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
-    const [errEmail, setErrEmail] = useState('')
-    const [errPassword, setErrPassword] = useState('')
-    const handSubmit = async (e) => {
-        e.preventDefault();
-        if (!email) {
-            setErrEmail('Email is required')
-            return;
-        } else if (!/\S+@\S+\.\S+/.test(email)) {
-            setErrEmail('Email is invalid')
-            return;
-        } else if (!password) {
-            setErrPassword('Password is required')
-            return;
-        }
-        try {
-            const res = await authService.doLogin({email, password});
-            const token = res.data.token;
-            const data = (jwt_decode(token));
-            alert(data.email);
-            alert(data.password);
-            console.log(data);
-            console.log(token);
-        } catch (e) {
-            console.log(e)
-        }
-        setEmail('');
-        setPassword('');
-    }
     return (
         <>
             <div className="font-sans">
@@ -48,18 +14,18 @@ function Login() {
                             <label className="block mt-3 text-sm text-gray-700 text-center font-semibold">
                                 Login
                             </label>
-                            <form className="mt-10" onSubmit={handSubmit}>
+                            <form className="mt-10" >
                                 <div>
                                     <input type="text" placeholder="Email"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                           onChange={(e) => setEmail(e.target.value)} value={email}/>
-                                    <p className="error font-semibold text-red-600">{errEmail}</p>
+                                           />
+                                    <p className="error font-semibold text-red-600">errEmail</p>
                                 </div>
                                 <div className="mt-7">
                                     <input type="password" placeholder="Password"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"
-                                           onChange={(e) => setPassword(e.target.value)} value={password}/>
-                                    <p className="error font-semibold text-red-600">{errPassword}</p>
+                                           />
+                                    <p className="error font-semibold text-red-600">errPassword</p>
                                 </div>
                                 <div className="mt-7">
                                     <button

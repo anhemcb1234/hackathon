@@ -1,5 +1,3 @@
-import Login from "./login";
-
 function SignUp() {
     return (
         <>
