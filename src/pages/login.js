@@ -1,4 +1,34 @@
+<<<<<<< HEAD
 function Login() {
+=======
+import {useState} from 'react'
+import {userServices} from '../services/userServices'
+
+function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('')
+    const [errEmail, setErrEmail] = useState('')
+    const [errPassword, setErrPassword] = useState('')
+    const handSubmit = async (e) => {
+        e.preventDefault();
+        if (!email) {
+            setErrEmail('Email is required')
+            return;
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+            setErrEmail('Email is invalid')
+            return;
+        } else if (!password) {
+            setErrPassword('Password is required')
+            return;
+        }
+        try {
+        } catch (e) {
+            console.log(e)
+        }
+        setEmail('');
+        setPassword('');
+    }
+>>>>>>> 969112a311a258ec87b03036e25462a1e0262029
     return (
         <>
             <div className="font-sans">
