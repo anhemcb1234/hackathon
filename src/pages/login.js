@@ -37,11 +37,11 @@ function Login() {
         setEmail('');
         setPassword('');
     }
-    // useEffect(() => {
-    //     if(localStorage.getItem('token')) {
-            
-    //     }
-    // })
+    useEffect(() => {
+        if(localStorage.getItem('token')) {
+            navigate('/chatBox')
+        }
+    })
     return (
         <>
             <div className="font-sans">

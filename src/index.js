@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import Login from './pages/Login';
-import SignUp from './pages/SignUp';
+import SignUp from './pages/Signup';
+import ChatBox from './pages/Chatbox';
 import {
   BrowserRouter,
   Routes,
@@ -15,6 +16,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/chatBox" element={<ChatBox />} />
     </Routes>
   </BrowserRouter>
 );
