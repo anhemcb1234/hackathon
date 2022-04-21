@@ -98,9 +98,7 @@ function SignUp() {
                                 <div className="mt-7">
                                     <div className="flex justify-center items-center">
                                         <label className="mr-2">You have an account?</label>
-                                        <a divef="#"
-                                           className=" text-blue-500 transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105"/>
-                                        Login
+                                        <Link to="/">Login</Link>
                                     </div>
                                 </div>
                         </div>
