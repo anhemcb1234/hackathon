@@ -12,6 +12,10 @@ function ChatBox() {
     const [data, setData] = useState([])
     const [id, setId] = useState(0)
     
+    const handlerLogOut = () => {
+        localStorage.removeItem('token')
+        navigate('/')
+    }
     const handlerText = (e) => {
         setMessage(e.target.value)
     }
@@ -60,29 +64,22 @@ function ChatBox() {
     return (
         <div>
        
-            <div className="container mx-auto shadow-lg rounded-lg">
+            <div className="container mx-auto shadow-lg rounded-lg mt-20">
              
                 <div className="px-5 py-5 flex justify-between items-center bg-white border-b-2">
                     <div className="font-semibold text-2xl">GoingChat</div>
-                    <div className="w-1/2">
-                        <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="search IRL"
-                            className="rounded-2xl bg-gray-100 py-3 px-5 w-full"
-                        />
-                    </div>
-                    <div
-                        className="h-12 w-12 p-2 bg-yellow-500 rounded-full text-white font-semibold flex items-center justify-center"
+                    
+                    <button
+                        onClick={handlerLogOut}
+                        className="h-12 w-12 text-sm p-2 bg-yellow-500 rounded-full text-white font-semibold flex items-center justify-center"
                     >
-                        RA
-                    </div>
+                        Log out
+                    </button>
                 </div>
                 
                 <div className="flex flex-row justify-between bg-white">
                     <div className="w-full px-5 flex flex-col justify-between">
-                        <div className="flex h-screen flex-col mt-5">
+                        <div className="flex  flex-col mt-5">
                             {dataMess.map((item, index) => {
                                 return (
                                     <div key={index} >
