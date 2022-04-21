@@ -1,10 +1,11 @@
-<<<<<<< HEAD
-=======
 import {userServices} from '../services/userServices'
-import {useState} from 'react';
-
->>>>>>> 969112a311a258ec87b03036e25462a1e0262029
+import {useState, useEffect} from 'react';
+import { Link } from "react-router-dom";
+import {
+    useNavigate,
+  } from "react-router-dom";
 function SignUp() {
+    let navigate = useNavigate();
     const [name, setName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
@@ -25,18 +26,23 @@ function SignUp() {
 
     async function handlerSubmit() {
         try{
-            const res = await userServices.postSignIn(
+            await userServices.postSignIn(
                 {
                 name: name, 
                 phone: phone,
                 email: email, 
                 pass: pass
             })
-            console.log(res)
+            alert("Đăng ký thành công");
         } catch(e) {
             alert(e)
         }
     }
+    useEffect(() => {
+        if(localStorage.getItem('token')) {
+            navigate('/')
+        }
+    })
     return (
         <>
             <div className="font-sans">
