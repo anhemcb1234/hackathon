@@ -10,9 +10,16 @@ function postSignIn(payload) {
 function postMess(payload) {
    return Axios.post(`/add-message`,payload);
 }
-
+function getMess() {
+   return Axios.get(`/list-messages`);
+}
+function getUser() {
+   return Axios.get(`/user`);
+}
 export const userServices = {
 postLogin,
 postSignIn,
-postMess
+postMess,
+getMess,
+getUser
 };

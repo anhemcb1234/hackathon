@@ -30,6 +30,7 @@ function Login() {
                 password: password
             })
             localStorage.setItem('token', login.data.token);
+            navigate('/chatBox')
             alert("Đăng nhập thành công")
         } catch (e) {
             alert(e)
