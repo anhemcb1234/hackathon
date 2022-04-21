@@ -3,17 +3,12 @@ import {useState} from 'react';
 
 function SignUp() {
     const [name, setName] = useState('');
-    const [Fname, setFName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
-    const [confirmPass, setConfirmPass] = useState('');
 
     const handlerName = (e) => {
         setName(e.target.value)
-    }
-    const handlerFullName = (e) => {
-        setFName(e.target.value)
     }
     const handlerPhone = (e) => {
         setPhone(e.target.value)
@@ -24,12 +19,17 @@ function SignUp() {
     const handlerPass= (e) => {
         setPass(e.target.value)
     }
-    const handlerConfirmPass= (e) => {
-        setConfirmPass(e.target.value)
-    }
+
     async function handlerSubmit() {
         try{
-            console.log(1)
+            const res = await userServices.postSignIn(
+                {
+                name: name, 
+                phone: phone,
+                email: email, 
+                pass: pass
+            })
+            console.log(res)
         } catch(e) {
             alert(e)
         }
@@ -46,17 +46,12 @@ function SignUp() {
                             <label className="block mt-3 text-sm text-gray-700 text-center font-semibold">
                                 Sign Up
                             </label>
-                            <form method="" action="" className="mt-10">
 
                                 <div>
                                     <input onChange={e => handlerName(e)} type="text" placeholder="Name"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
                                 </div>
 
-                                <div className="mt-7">
-                                    <input onChange={e => handlerFullName(e)} type="text" placeholder="Full name"
-                                           className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                </div>
 
                                 <div className="mt-7">
                                     <input onChange={e => handlerPhone(e)} type="number" placeholder="Phone number"
@@ -70,11 +65,6 @@ function SignUp() {
 
                                 <div className="mt-7">
                                     <input onChange={e => handlerPass(e)} type="password" placeholder="Password"
-                                           className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
-                                </div>
-
-                                <div className="mt-7">
-                                    <input onChange={e => handlerConfirmPass(e)} type="password" placeholder="Confirm password"
                                            className="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0"/>
                                 </div>
 
@@ -104,7 +94,6 @@ function SignUp() {
                                         Login
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
