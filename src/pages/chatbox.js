@@ -27,9 +27,9 @@ function ChatBox() {
             await userServices.postMess({
                 message: message
             })
-            setMessage('')
             console.log(data)
             console.log(dataMess)
+            setMessage('')
 
         } catch (e) {
             alert(e)
@@ -59,6 +59,13 @@ function ChatBox() {
         }
         handlerUser()
         handlerMess()
+        let time = setInterval(() => {
+            handlerUser()
+            handlerMess()
+        }, 2000)
+        return () => {
+            clearInterval(time)
+        }
     }, [])
     return (
         <div>
@@ -93,6 +100,7 @@ function ChatBox() {
                                 className="w-full bg-gray-300 py-5 px-3 rounded-xl"
                                 type="text"
                                 placeholder="type your message here..."
+                                value={message}
                             />
                             <button onClick={handlerSend} className="bg-blue-500 absolute right-5 bottom-8 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                                 Send
