@@ -50,7 +50,7 @@ function ChatBox() {
             setData(res.data)
             setId(res.data.id)
         } catch (e) {
-            alert(e)
+            console.log(e)
         }
     }
     useEffect(() => {
@@ -73,7 +73,7 @@ function ChatBox() {
             <div className="container mx-auto shadow-lg rounded-lg mt-20">
              
                 <div className="px-5 py-5 flex justify-between items-center bg-white border-b-2">
-                    <div className="font-semibold text-2xl">GoingChat</div>
+                    <div className="font-semibold text-2xl">CY Front-end</div>
                     
                     <button
                         onClick={handlerLogOut}
@@ -88,7 +88,7 @@ function ChatBox() {
                         <div className="flex  flex-col mt-5">
                             {dataMess.map((item, index) => {
                                 return (
-                                    <div key={index} >
+                                    <div key={index} className="my-1">
                                         <p className={item.user_id === id ? textUser : 'none'}>{item.message}</p>
                                     </div>
                                 )
